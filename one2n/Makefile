@@ -1,5 +1,3 @@
-# Makefile
-
 IMAGE_NAME = one2n-api
 TAG = 1.0.0
 REGISTRY = yourdockerhubusername/$(IMAGE_NAME)
