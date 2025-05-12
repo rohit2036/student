@@ -25,12 +25,15 @@ jobs:
 
       - name: Install dependencies
         run: make install
-
+        working-directory: one2n
+        
       - name: Run tests
         run: make test
+        working-directory: one2n
 
       - name: Run linting
         run: make lint
+        working-directory: one2n
 
       - name: Docker login
         env:
@@ -40,3 +43,4 @@ jobs:
 
       - name: Build & push Docker image
         run: make docker-push
+        working-directory: one2n
