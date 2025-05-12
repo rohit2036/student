@@ -23,7 +23,6 @@ jobs:
 
       - name: Install dependencies
         run: make install
-        working-directory: ./
 
       - name: Run tests
         run: make test
