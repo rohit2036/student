@@ -3,9 +3,7 @@ name: CI Pipeline
 on:
   push:
     paths:
-      - 'app/**'
-      - 'Dockerfile'
-      - 'Makefile'
+      - 'one2n/**'
   workflow_dispatch:
 
 jobs:
@@ -25,18 +23,23 @@ jobs:
 
       - name: Install dependencies
         run: make install
+        working-directory: one2n
 
       - name: Run tests
         run: make test
+        working-directory: one2n
 
       - name: Run linting
         run: make lint
+        working-directory: one2n
 
       - name: Docker login
         env:
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
           DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
         run: echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+        working-directory: one2n
 
       - name: Build & push Docker image
         run: make docker-push
+        working-directory: one2n
